@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('horarios', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedSmallInteger('day');
             $table->boolean('active');
             $table->time('morning_start');

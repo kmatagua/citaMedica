@@ -34,7 +34,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //RUTAS MEDICOS
     Route::resource('medicos', DoctorController::class);
 
-    //RUTAS MEDICOS
+    //RUTAS PACIENTES
     Route::resource('pacientes', PatientController::class);
 });
 
@@ -46,7 +46,8 @@ Route::middleware(['auth', 'doctor'])->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/reservarcitas/create', [AppointmentController::class, 'create'])->name('appointment.create');
-    Route::post('/miscitas', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::post('/reservarcitas', [AppointmentController::class, 'store'])->name('appointment.store');
+    Route::post('/miscitas', [AppointmentController::class, 'index'])->name('appointment.index');
 
     //JSON
     Route::get('/especialidades/{specialty}/medicos', [ApiSpecialtyController::class, 'doctors']);
